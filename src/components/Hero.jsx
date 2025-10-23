@@ -6,10 +6,10 @@ function Hero() {
         backgroundImage: `url(${assets.header_img})`}}>
   <div className="absolute inset-0 bg-black/50"></div>
  <div className="relative z-10 text-center px-4 md:px-9">
-        <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+        <h1 className="text-4xl md:text-6xl font-bold text-white mb-3">
           Find Your Favorite Foods
         </h1>
-        <p className="text-white text-lg md:text-xl mb-8">
+        <p className="text-white text-lg md:text-xl mb-4">
           Discover delicious meals near you
         </p>
         <form
