@@ -1,8 +1,25 @@
-import React from 'react'
+import React , {useState, useRef} from 'react'
 import Hero from '../components/Hero'
 import { menu_list } from "../assets/images/assets"
 import Menu from '../components/Menu'
+import { food_list } from "../assets/images/assets"
+
 function Home() {
+
+const [category , setCategory] = useState(null)
+const menuRef = useRef(null);
+
+const CategoryFoods= category ? food_list.filter(food => food.category === category) : food_list;
+const categoryClick =(menuname)=>{
+setCategory(menuname);
+
+
+ setTimeout(() => {
+      menuRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+}
+
+
   return (
     <div>
        {/* Hero Section */}
@@ -18,7 +35,7 @@ function Home() {
 
 
   
-  <div className='flex flex-col items-center group cursor-pointer'>
+  <div key={index} onClick={() => categoryClick(category.menu_name)} className='flex flex-col items-center group cursor-pointer'>
 <div className="w-32 h-32 rounded-full overflow-hidden shadow-md border-4 border-(--accent) transition-transform duration-300 group-hover:scale-105">
                 <img
                  src={category.menu_image} alt={category.menu_name}
@@ -34,7 +51,9 @@ function Home() {
 
 </div>
        </section>
-       <Menu />
+       <div ref={menuRef} className="scroll-target">
+       <Menu foodItems={CategoryFoods} category={category} />
+    </div>
     </div>
   )
 }

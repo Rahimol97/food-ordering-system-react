@@ -22,3 +22,6 @@ html, body {
      overflow-x: hidden;
 
 }
+.scroll-target {
+  scroll-margin-top: 80px; /* Adjust as needed */
+}

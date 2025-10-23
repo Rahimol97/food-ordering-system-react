@@ -1,17 +1,17 @@
 import React from 'react'
-import { food_list } from "../assets/images/assets"
 import { assets } from "../assets/images/assets"
 
 
-function Menu() {
+function Menu({foodItems , category}) {
   return (
+   
     <section className='container mx-auto px-4'>
-        <h2 className='text-3xl font-bold text-center mb-7 text-(--dark)'>Our Menu</h2> 
+        <h2 className='text-3xl font-bold text-center mb-7 text-(--dark)'>{category ? category : "Our Menu"}</h2> 
     <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 '>
-        {food_list.map((menu,index)=>(
+        {foodItems.map((menu,index)=>(
 
        
-<div className='bg-white shadow-md rounded-2xl overflow-hidden transition-transform duration-300 hover:scale-105'>
+<div key={index} className='bg-white shadow-md rounded-2xl overflow-hidden transition-transform duration-300 hover:scale-105'>
 <img src={menu.image}
               alt={menu.name} className='w-full h-48 object-cover' />
 <div className='p-4 flex flex-col justify-between h-[180px]'>
