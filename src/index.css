@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+
+/*  global color palette */
+:root {
+  --primary: rgb(245, 247, 248);   /* light gray */
+  --secondary: rgb(252, 222, 112); /* yellow */
+  --accent: rgb(232, 184, 109);    /* orange */
+  --dark: rgb(24, 85, 25);         /* green-dark */
+  --light: rgb(245, 247, 248);     /* white-ish */
+}
+
+* {
+    box-sizing: border-box;    
+}
+/*  Global styles */
+html, body {
+  font-family: Open Sans;
+   background-color: var(--primary);
+   color: var(--dark);
+    scroll-behavior: smooth;
+     overflow-x: hidden;
+
+}
