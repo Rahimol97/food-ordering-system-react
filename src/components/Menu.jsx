@@ -51,7 +51,7 @@ function Menu({ foodItems, category, search ,count,setCount}) {
                 </div>
                   <div className="flex items-center justify-between mb-3">
                     <span className="text-lg font-bold text-(--orange)">
-                      ₹{menu.price}0.00 </span>
+                      ₹{menu.price}.00 </span>
                     <div className="flex items-center text-yellow-500">
 
                       <span className="ml-1 text-(--dark)"><img src={assets.rating_starts}></img></span>
