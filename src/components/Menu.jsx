@@ -3,7 +3,7 @@ import { assets } from "../assets/images/assets"
 
 
 function Menu({ foodItems, category, search }) {
-const [count,setCount] =useState(0);
+const [count,setCount] =useState({});
 
 
   return (
@@ -24,23 +24,23 @@ const [count,setCount] =useState(0);
             <div key={index} className='bg-white shadow-md rounded-2xl overflow-hidden transition-transform duration-300 hover:scale-105'>
               <img src={menu.image}
                 alt={menu.name} className='w-full h-48 object-cover' />
-              <div className='p-4 flex flex-col justify-between h-[110px]'>
+              <div className='p-3 flex flex-col justify-between h-[110px]'>
                 <div>
                    <div className='flex justify-between items-center mb-2'>
                   <h3 className="text-xl font-semibold text-(--dark) mb-2">
                     {menu.name} </h3>
                      <div className="flex items-center gap-2 overflow-hidden">
                   <button
-                   onClick={()=>setCount(prev =>prev>0 ? prev-1 : 0)}
+                   onClick={()=>setCount(prev =>({...prev, [menu._id]:prev[menu._id]>0 ? prev[menu._id]-1:0}))}
                    className="w-7 h-10 flex items-center justify-center transition"
                   >
                    <img src={assets.remove_icon_red} alt="add icon"/>
                   </button>
                   <span className="w-6 h-8 flex items-center justify-center  text-(--dark) font-semibold">
-                  {count}
+                  {count[menu._id] || 0}
                   </span>
                   <button
-                   onClick={()=>setCount(prev => prev +1) }
+                   onClick={()=>setCount(prev =>({...prev,[menu._id]:(prev[menu._id] || 0) + 1})) }
                      className="w-7 h-10 flex items-center justify-center transition"
                   
                   >
