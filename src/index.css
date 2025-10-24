@@ -8,6 +8,8 @@
   --accent: rgb(232, 184, 109);    /* orange */
   --dark: rgb(24, 85, 25);         /* green-dark */
   --light: rgb(245, 247, 248);     /* white-ish */
+  --orange: rgb(231, 107, 25)  /* heavy orange */
+  
 }
 
 * {
