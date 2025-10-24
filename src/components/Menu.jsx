@@ -2,8 +2,8 @@ import React ,{useState} from 'react'
 import { assets } from "../assets/images/assets"
 
 
-function Menu({ foodItems, category, search }) {
-const [count,setCount] =useState({});
+function Menu({ foodItems, category, search ,count,setCount}) {
+
 
 
   return (

@@ -3,9 +3,10 @@ import Hero from '../components/Hero'
 import { menu_list } from "../assets/images/assets"
 import Menu from '../components/Menu'
 import { food_list } from "../assets/images/assets"
+import { useOutletContext } from "react-router-dom";
 
 function Home() {
-
+const { count, setCount } = useOutletContext();
 const [category , setCategory] = useState(null);
 const [search , setSearch] =useState("");
 const menuRef = useRef(null);
@@ -66,7 +67,8 @@ const onsearchFood =(term)=>{
 </div>
        </section>
        <div ref={menuRef} className="scroll-target">
-       <Menu foodItems={searchFilteredFoods} category={category} search={search} />
+       <Menu foodItems={searchFilteredFoods} category={category} search={search} count={count}
+        setCount={setCount} />
     </div>
     </div>
   )
