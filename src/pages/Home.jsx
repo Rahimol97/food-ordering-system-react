@@ -6,24 +6,38 @@ import { food_list } from "../assets/images/assets"
 
 function Home() {
 
-const [category , setCategory] = useState(null)
+const [category , setCategory] = useState(null);
+const [search , setSearch] =useState("");
 const menuRef = useRef(null);
-
+//category filter
 const CategoryFoods= category ? food_list.filter(food => food.category === category) : food_list;
+console.log(CategoryFoods);
+//search bar filter
+
+const searchFilteredFoods = search ? CategoryFoods.filter(food=>food.name.toLowerCase().includes(search.toLowerCase())):CategoryFoods
+console.log(searchFilteredFoods)
+
+//category click
 const categoryClick =(menuname)=>{
 setCategory(menuname);
-
+setSearch("");
 
  setTimeout(() => {
       menuRef.current?.scrollIntoView({ behavior: 'smooth' });
     }, 100);
 }
 
+//searchbar onchange
+const onsearchFood =(term)=>{
+  setSearch(term);
+  setCategory(null);
+}
+
 
   return (
     <div>
        {/* Hero Section */}
-      <Hero />
+      <Hero searchfood={onsearchFood} />
 
        {/* Category Section */}
        <section className='container mx-auto px-4 py-16'>
@@ -52,7 +66,7 @@ setCategory(menuname);
 </div>
        </section>
        <div ref={menuRef} className="scroll-target">
-       <Menu foodItems={CategoryFoods} category={category} />
+       <Menu foodItems={searchFilteredFoods} category={category} search={search} />
     </div>
     </div>
   )

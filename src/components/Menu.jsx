@@ -2,15 +2,22 @@ import React from 'react'
 import { assets } from "../assets/images/assets"
 
 
-function Menu({foodItems , category}) {
+function Menu({foodItems , category, search }) {
   return (
    
     <section className='container mx-auto px-4'>
-        <h2 className='text-3xl font-bold text-center mb-7 text-(--dark)'>{category ? category : "Our Menu"}</h2> 
+        <h2 className='text-3xl font-bold text-center mb-7 text-(--dark)'>{category ? category : search ?`Search Results` : "Our Menu"}</h2> 
+    
+    {foodItems.length===0 ? (
+ <p className="text-center text-xl text-(--dark) py-10">
+          No match found 😔
+        </p>
+    ) :(
+
+    
     <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 '>
         {foodItems.map((menu,index)=>(
 
-       
 <div key={index} className='bg-white shadow-md rounded-2xl overflow-hidden transition-transform duration-300 hover:scale-105'>
 <img src={menu.image}
               alt={menu.name} className='w-full h-48 object-cover' />
@@ -34,6 +41,7 @@ function Menu({foodItems , category}) {
 </div>
   ))}
     </div>
+       )}
     </section>
   )
 }
