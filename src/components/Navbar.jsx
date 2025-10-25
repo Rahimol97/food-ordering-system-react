@@ -6,7 +6,7 @@ function Navbar({count}) {
 
 const [open, setOpen] =useState(false);
 const totalItems = Object.values(count).reduce((a, b) => a + b, 0);
-
+console.log(count)
   return (
     <nav className="bg-(--dark) text-(--light) shadow-lg fixed top-0 left-0 w-full z-50 ">
 <div className="container mx-auto flex justify-between items-center px-6 py-4">

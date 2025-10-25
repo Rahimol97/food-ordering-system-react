@@ -10,7 +10,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Cart from "./pages/Cart";
-
+import Checkout from "./pages/Checkout";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +22,7 @@ children:[
       { path: "about", element: <About /> },
       { path: "contact", element: <Contact /> },
       { path: "cart", element: <Cart /> },
+      { path: "checkout", element: <Checkout /> },
 
 ],
 

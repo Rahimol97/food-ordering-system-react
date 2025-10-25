@@ -1,6 +1,7 @@
 import React from "react";
 import { useOutletContext } from "react-router-dom";
 import { assets } from "../assets/images/assets";
+import { Link } from 'react-router-dom';
 
 function Cart() {
   const { fooditems, count, setCount } = useOutletContext();
@@ -146,7 +147,7 @@ function Cart() {
             </div>
 
             <button className="mt-6 w-full bg-(--dark)  text-white py-3 rounded-md font-semibold ">
-              Proceed to Checkout
+         <Link to="/checkout" state={{ grandTotal }} >  Proceed to Checkout</Link> 
             </button>
           </div>
         </div>
