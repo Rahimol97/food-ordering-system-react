@@ -95,7 +95,7 @@ function Checkout() {
               onClick={() => setPopup(false)}
               className="bg-(--dark) text-white py-2 px-5 rounded-md "
             >
-              <Link to ='/'>Continue to shopping</Link>
+              <Link to ='/'>Continue shopping</Link>
             </button>
           </div>
         </div>
