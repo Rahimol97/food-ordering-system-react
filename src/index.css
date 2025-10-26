@@ -16,7 +16,7 @@
     box-sizing: border-box;    
 }
 /*  Global styles */
-html, body {
+ body {
   font-family: Open Sans;
    background-color: var(--primary);
    color: var(--dark);
@@ -26,4 +26,9 @@ html, body {
 }
 .scroll-target {
   scroll-margin-top: 80px; /* Adjust as needed */
+}
+
+body.dark {
+  background-color: #121212;
+  color: #fff;
 }

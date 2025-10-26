@@ -1,9 +1,11 @@
 import React ,{useState} from 'react'
 import { assets } from "../assets/images/assets"
+import { useSelector , useDispatch } from 'react-redux'
+import { addItem, removeItem } from "../redux/cartSlice";
 
-
-function Menu({ foodItems, category, search ,count,setCount}) {
-
+function Menu({ foodItems, category, search}) {
+  const dispatch = useDispatch();
+  const count = useSelector((state) => state.cart.items);
 
 
   return (
@@ -31,7 +33,7 @@ function Menu({ foodItems, category, search ,count,setCount}) {
                     {menu.name} </h3>
                      <div className="flex items-center gap-2 overflow-hidden">
                   <button
-                   onClick={()=>setCount(prev =>({...prev, [menu._id]:prev[menu._id]>0 ? prev[menu._id]-1:0}))}
+                   onClick={()=>dispatch(removeItem(menu._id))}
                    className="w-7 h-10 flex items-center justify-center transition"
                   >
                    <img src={assets.remove_icon_red} alt="add icon"/>
@@ -40,7 +42,7 @@ function Menu({ foodItems, category, search ,count,setCount}) {
                   {count[menu._id] || 0}
                   </span>
                   <button
-                   onClick={()=>setCount(prev =>({...prev,[menu._id]:(prev[menu._id] || 0) + 1})) }
+                   onClick={()=>dispatch(addItem(menu._id))}
                      className="w-7 h-10 flex items-center justify-center transition"
                   
                   >

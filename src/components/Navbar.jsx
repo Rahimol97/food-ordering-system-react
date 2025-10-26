@@ -1,10 +1,12 @@
 import React,{useState} from 'react'
 import { Link } from 'react-router-dom';
 import { assets } from "../assets/images/assets"
+import { useSelector } from 'react-redux';
 
-function Navbar({count}) {
+function Navbar() {
 
 const [open, setOpen] =useState(false);
+  const count = useSelector((state) => state.cart.items);
 const totalItems = Object.values(count).reduce((a, b) => a + b, 0);
 console.log(count)
   return (

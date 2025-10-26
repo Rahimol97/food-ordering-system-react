@@ -1,13 +1,16 @@
 import React from "react";
-import { useOutletContext } from "react-router-dom";
 import { assets } from "../assets/images/assets";
 import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from "react-redux";
+import { addItem, removeItem, deleteItem } from "../redux/cartSlice";
+import { food_list } from "../assets/images/assets";
 
 function Cart() {
-  const { fooditems, count, setCount } = useOutletContext();
+const dispatch = useDispatch();
+  const count = useSelector((state) => state.cart.items);
 
 
-  const cartItems = fooditems.filter((item) => count[item._id] > 0);
+  const cartItems =food_list.filter((item) => count[item._id] > 0);
 
   const subtotal = cartItems.reduce(
     (acc, item) => acc + item.price * count[item._id],
@@ -17,13 +20,6 @@ function Cart() {
   const tax = subtotal * 0.05;
   const grandTotal = subtotal + shipping + tax;
 
-  const handleRemoveItem = (id) => {
-    setCount((prev) => {
-      const newCount = { ...prev };
-      delete newCount[id];
-      return newCount;
-    });
-  };
 
   return (
     <section className="container mx-auto px-4 py-10 mt-16">
@@ -65,11 +61,7 @@ function Cart() {
                 <div className="flex items-center justify-center gap-3 sm:w-1/3">
                   <button
                     onClick={() =>
-                      setCount((prev) => ({
-                        ...prev,
-                        [item._id]:
-                          prev[item._id] > 0 ? prev[item._id] - 1 : 0,
-                      }))
+                      dispatch(removeItem(item._id))
                     }
                     className=" flex items-center justify-center"
                   >
@@ -86,10 +78,7 @@ function Cart() {
 
                   <button
                     onClick={() =>
-                      setCount((prev) => ({
-                        ...prev,
-                        [item._id]: (prev[item._id] || 0) + 1,
-                      }))
+                       dispatch(addItem(item._id))
                     }
                     className="flex items-center justify-center"
                   >
@@ -107,7 +96,7 @@ function Cart() {
                     ₹{item.price * count[item._id]}.00
                   </p>
                   <button
-                    onClick={() => handleRemoveItem(item._id)}
+                    onClick={() =>dispatch(deleteItem(item._id))}
                     
                   >
                     <img
