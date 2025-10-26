@@ -30,7 +30,7 @@ function Contact() {
         <input type="text" name="subject" placeholder='Subject' className='w-full  border border-(--dark)/30 rounded-lg px-4 py-2 focus:outline-none' />
        
         <textarea type="text" name="message" placeholder='enter your message' rows={5} className='w-full  border border-(--dark)/30 rounded-lg px-4 py-2 focus:outline-none' />
-      <button className='w-full bg-(--dark) text-(--light) text-xl py-2 rounded-lg cursor-pointer'>send</button>
+      <button onClick={(e)=>e.preventDefault()} className='w-full bg-(--dark) text-(--light) text-xl py-2 rounded-lg cursor-pointer'>send</button>
       
         </form>
         </div>
