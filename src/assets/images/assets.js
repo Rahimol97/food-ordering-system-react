@@ -56,8 +56,9 @@ export const assets = {
     add_icon_green,
     remove_icon_red,
     rating_starts,
-   cross_icon,
-   ordersuccess,
+    cross_icon,
+    ordersuccess,
+    food_22
    
 }
 
