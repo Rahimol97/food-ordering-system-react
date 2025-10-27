@@ -4,6 +4,7 @@ import add_icon_green from './add_icon_green.png'
 import remove_icon_red from './remove_icon_red.png'
 import cross_icon from './cross_icon.png'
 import ordersuccess from './ordersuccess.png'
+import profileicon  from './profile_icon.png'
 
 import menu_1 from './menu_1.png'
 import menu_2 from './menu_2.png'
@@ -58,7 +59,8 @@ export const assets = {
     rating_starts,
     cross_icon,
     ordersuccess,
-    food_22
+    food_22,
+    profileicon
    
 }
 

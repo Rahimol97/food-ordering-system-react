@@ -15,6 +15,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
+import Account from "./components/SigninSignup.jsx";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,7 @@ children:[
       { path: "contact", element: <Contact /> },
       { path: "cart", element: <Cart /> },
       { path: "checkout", element: <Checkout /> },
+      { path: "account", element: <Account /> },
 
 ],
 

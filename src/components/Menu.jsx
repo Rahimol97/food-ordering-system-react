@@ -15,7 +15,7 @@ function Menu({ foodItems, category, search}) {
 
       {foodItems.length === 0 ? (
         <p className="text-center text-xl text-(--dark) py-10">
-          No match found 😔
+          No match found 
         </p>
       ) : (
 
