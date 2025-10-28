@@ -9,11 +9,11 @@ function About() {
   
    </div>
    <div className="max-w-4xl mx-auto px-6 py-10 text-center">
-      <h1 className="text-3xl font-bold text-[var(--dark)] mb-6">
+      <h1 className="text-3xl font-bold  mb-6">
         About FoodFinder
       </h1>
 
-      <p className="text-lg text-gray-700 leading-relaxed">
+      <p className="text-lg leading-relaxed">
         <strong>FoodFinder</strong> is a user-friendly food ordering application
         designed to make your dining experience simple and enjoyable. With
         FoodFinder, customers can easily browse and order food online through a

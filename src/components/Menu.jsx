@@ -11,10 +11,10 @@ function Menu({ foodItems, category, search}) {
   return (
 
     <section className='container mx-auto px-4'>
-      <h2 className='text-3xl font-bold text-center mb-7 text-(--dark)'>{category ? category : search ? `Search Results` : "Our Menu"}</h2>
+      <h2 className='text-3xl font-bold text-center mb-7 '>{category ? category : search ? `Search Results` : "Our Menu"}</h2>
 
       {foodItems.length === 0 ? (
-        <p className="text-center text-xl text-(--dark) py-10">
+        <p className="text-center text-xl  py-10">
           No match found 
         </p>
       ) : (
@@ -23,7 +23,7 @@ function Menu({ foodItems, category, search}) {
         <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 '>
           {foodItems.map((menu, index) => (
 
-            <div key={index} className='bg-white shadow-md rounded-2xl overflow-hidden transition-transform duration-300 hover:scale-105'>
+            <div key={index} className=' shadow-md rounded-2xl bg-white overflow-hidden transition-transform duration-300 hover:scale-105'>
               <img src={menu.image}
                 alt={menu.name} className='w-full h-48 object-cover' />
               <div className='p-3 flex flex-col justify-between h-[110px]'>
@@ -38,7 +38,7 @@ function Menu({ foodItems, category, search}) {
                   >
                    <img src={assets.remove_icon_red} alt="add icon"/>
                   </button>
-                  <span className="w-6 h-8 flex items-center justify-center  text-(--dark) font-semibold">
+                  <span className="w-6 h-8 flex items-center justify-center text-(--dark) font-semibold">
                   {count[menu._id] || 0}
                   </span>
                   <button
@@ -56,7 +56,7 @@ function Menu({ foodItems, category, search}) {
                       ₹{menu.price}.00 </span>
                     <div className="flex items-center text-yellow-500">
 
-                      <span className="ml-1 text-(--dark)"><img src={assets.rating_starts}></img></span>
+                      <span className="ml-1 "><img src={assets.rating_starts}></img></span>
                     </div>
                   </div>
                 </div>

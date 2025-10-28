@@ -11,15 +11,15 @@ function Checkout() {
   const grandTotal = location.state?.grandTotal || 0;
 
   return (
-    <div className="min-h-screen bg-gray-50 flex justify-center py-12 px-4">
+    <div className="min-h-screen  flex justify-center py-12 px-4">
       <div className="w-full max-w-4xl flex flex-col gap-8 mt-16">
-        <h2 className="text-3xl font-bold text-center text-gray-800">
+        <h2 className="text-3xl font-bold text-center">
           Checkout
         </h2>
 
-        <div className="flex flex-col md:flex-row gap-6">
+        <div className="flex  flex-col md:flex-row gap-6">
           <div
-            className={`flex-1 rounded-2xl p-6 shadow-lg cursor-pointer transition-all ${
+            className={`flex-1 bg-white text-(--dark) rounded-2xl p-6 shadow-lg cursor-pointer transition-all ${
               address === "home"
                 ? "border-3"
                 : ""
@@ -34,7 +34,7 @@ function Checkout() {
           </div>
 
           <div
-            className={`flex-1 rounded-2xl p-6 shadow-lg cursor-pointer transition-all ${
+            className={`flex-1 bg-white text-(--dark) rounded-2xl p-6 shadow-lg cursor-pointer transition-all ${
               address === "office"
                 ? "border-3"
                 : ""
@@ -48,7 +48,7 @@ function Checkout() {
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl shadow-md p-6 flex flex-col gap-4">
+        <div className="bg-white text-(--dark) rounded-2xl shadow-md p-6 flex flex-col gap-4">
           <h3 className="text-xl font-semibold">Payment Methods</h3>
           <div className="flex flex-col gap-3">
             {["card", "cod", "gpay", "wallet"].map((method) => (
@@ -67,7 +67,7 @@ function Checkout() {
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl shadow-md p-6 flex flex-col gap-4">
+        <div className="bg-white text-(--dark) rounded-2xl shadow-md p-6 flex flex-col gap-4">
           <div className="flex font-semibold justify-between text-2xl">
             <span>Grand Total</span>
             <span>₹{grandTotal.toFixed(2)}</span>
@@ -79,7 +79,7 @@ function Checkout() {
       </div>
        {popup && (
         <div className="fixed inset-0 flex items-center justify-center z-50 bg-black/80">
-          <div className="bg-white rounded-2xl shadow-2xl p-8 w-80 text-center">
+          <div className="bg-white text-(--dark) rounded-2xl shadow-2xl p-8 w-80 text-center">
            <div className="flex justify-center"> 
             <img 
       src={assets.ordersuccess} 

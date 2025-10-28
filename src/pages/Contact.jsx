@@ -19,11 +19,11 @@ const contactFormsubmit = (e)=>{
   <div className="w-full max-w-2xl px-4 md:px-8 py-12">
        
         <div className="text-center mb-10">
-          <h2 className="text-3xl font-bold text-(--dark) mb-4">HAVE ANY QESTIONS</h2>
-          <p className="text-(--dark)/80 text-lg">
+          <h2 className="text-3xl font-bold  mb-4">HAVE ANY QESTIONS</h2>
+          <p className=" text-lg">
            Want to know about any of our ingredients or suppliers?Send us a message below and we'll get right back to you.</p>
         </div>
-        <form onSubmit={contactFormsubmit} className='bg-(--light)  shadow-xl rounded-xl p-6 space-y-6'>
+        <form onSubmit={contactFormsubmit} className=' shadow-xl rounded-xl p-6 space-y-6'>
        <div className='flex flex-col md:flex-row gap-3'>
         <input type="text" name="name" placeholder='name' className='flex-1 border border-(--dark)/30 rounded-lg px-4 py-2 focus:outline-none' required />
         <input type="email" name="email" placeholder='Email' className='flex-1 border border-(--dark)/30 rounded-lg px-4 py-2 focus:outline-none' required />
@@ -42,10 +42,10 @@ const contactFormsubmit = (e)=>{
        <img src={assets.food_22} alt="food image" className='w-60 h-60  rounded-full overflow-hidden shadow-md  ' />
        </div>
         <div  className='flex-1 text-center p-3 md:text-left '>
- <p className="text-lg text-(--dark) mb-6">
+ <p className="text-lg  mb-6">
           Feel free to get in touch with us via email or phone.
         </p>
-<div className="space-y-4 text-(--dark)">
+<div className="space-y-4 ">
          
           <div className="flex items-center justify-center md:justify-start gap-3">
             <Phone className="text-(--accent)" />

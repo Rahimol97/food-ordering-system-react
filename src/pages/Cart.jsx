@@ -23,12 +23,12 @@ const dispatch = useDispatch();
 
   return (
     <section className="container mx-auto px-4 py-10 mt-16">
-      <h2 className="text-3xl font-bold text-center text-(--dark) mb-10">
+      <h2 className="text-3xl font-bold text-center  mb-10">
         Your Orders 
       </h2>
 
       {cartItems.length === 0 ? (
-        <p className="text-center text-lg text-(--dark)">
+        <p className="text-center text-lg ">
           Your cart is empty
         </p>
       ) : (

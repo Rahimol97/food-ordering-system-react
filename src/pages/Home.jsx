@@ -40,7 +40,7 @@ const onsearchFood =(term)=>{
 
        {/* Category Section */}
        <section className='container mx-auto px-4 py-16'>
-<h2 className='text-3xl font-bold text-center mb-10 text-(--dark)'>
+<h2 className='text-3xl font-bold text-center mb-10 '>
   Categories
 </h2>
 <div className='grid grid-cols-3 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-7 gap-3 justify-center'>
@@ -55,7 +55,7 @@ const onsearchFood =(term)=>{
                   className="w-full h-full object-cover"
                 />
               </div> 
-   <p className="mt-4 text-lg font-semibold text-(--dark) group-hover:text-(--accent) transition">
+   <p className="mt-4 text-lg font-semibold  group-hover:text-(--accent) transition">
              {category.menu_name}
               </p>
 
