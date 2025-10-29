@@ -16,7 +16,7 @@ import Contact from "./pages/Contact";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import Account from "./components/SigninSignup.jsx";
-import Admin from "./pages/admin.jsx";
+import Admin from "./pages/Admin.jsx";
 import Orders from "./pages/Orders.jsx";
 import ShipAddressForm from "./components/ShipAddressForm.jsx";
 
