@@ -10,11 +10,9 @@ const [search , setSearch] =useState("");
 const menuRef = useRef(null);
 //category filter
 const CategoryFoods= category ? food_list.filter(food => food.category === category) : food_list;
-console.log(CategoryFoods);
 //search bar filter
 
 const searchFilteredFoods = search ? CategoryFoods.filter(food=>food.name.toLowerCase().includes(search.toLowerCase())):CategoryFoods
-console.log(searchFilteredFoods)
 
 //category click
 const categoryClick =(menuname)=>{

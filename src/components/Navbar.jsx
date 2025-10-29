@@ -14,7 +14,6 @@ const [open, setOpen] =useState(false);
 const [useropen,setUseropen] = useState(false)
   const count = useSelector((state) => state.cart.items);
 const totalItems = Object.values(count).reduce((a, b) => a + b, 0);
-console.log(count)
 
  useEffect(() => {
     if (isDark) {
@@ -51,7 +50,7 @@ console.log(count)
     >      <img
         src={assets.basket_icon}
         alt="Cart"
-className="ml-8 w-10 h-10 filter brightness-100 sepia saturate-250 hue-rotate-30 contrast-70"
+className="ml-8 w-7 h-7 filter brightness-100 sepia saturate-250 hue-rotate-30 contrast-70"
       />
       {totalItems > 0 && (
             <span className="absolute -top-2 -right-3 w-7 h-7 bg-red-500 text-white text-md font-bold rounded-full flex items-center justify-center">
@@ -61,16 +60,16 @@ className="ml-8 w-10 h-10 filter brightness-100 sepia saturate-250 hue-rotate-30
     </button>
  <button
         onClick={() => setIsDark(!isDark)}
-        className="flex items-center  rounded-lg ml-3 dark:bg-gray-700 hover:opacity-90 transition"
+        className="flex items-center  rounded-lg  hover:opacity-90 transition"
       >
         {isDark ? (
           <>
-            <Sun className="w-8 h-8 text-yellow-400" />
+            <Sun className="w-7 h-7 text-yellow-400" />
             
           </>
         ) : (
           <>
-            <Moon className="w-8 h-8 text-dark" />
+            <Moon className="w-7 h-7 text-dark" />
            
           </>
         )}
@@ -110,7 +109,7 @@ className="ml-8 w-10 h-10 filter brightness-100 sepia saturate-250 hue-rotate-30
         ) : (
           <button
             onClick={() => navigate("/account")}
-            className="bg-(--secondary) text-(--dark) px-3 py-2 rounded-md hover:bg-(--accent) transition cursor-pointer"
+            className=" bg-(--secondary) text-(--dark) px-3 rounded-md hover:bg-(--accent) transition cursor-pointer"
           >
            Login
           </button>
@@ -120,8 +119,11 @@ className="ml-8 w-10 h-10 filter brightness-100 sepia saturate-250 hue-rotate-30
   
   <ul className='hidden md:flex gap-8 text-lg'>
     <li className='hover:text-(--accent) cursor-pointer transition'><Link to="/">Home</Link></li>
+    <li className='hover:text-(--accent) cursor-pointer transition'><Link to="/orders">My Orders</Link></li>
           <li className="hover:text-(--accent) cursor-pointer transition"><Link to="/about">About</Link></li>
           <li className="hover:text-(--accent) cursor-pointer transition"><Link to="/contact">Contact</Link></li>
+              <li className='hover:text-(--accent) cursor-pointer transition'><Link to="/admin">Admin</Link></li>
+
          
           <li className=" cursor-pointer  transition group"><button onClick={handleCartClick} className='relative'><img  className="w-8 h-8 transition duration-300 filter invert brightness-0 saturate-0 group-hover:brightness-150 group-hover:sepia group-hover:saturate-200 group-hover:hue-rotate-20 group-hover:contrast-125" src={assets.basket_icon} />
            {totalItems  > 0  &&(
@@ -203,8 +205,12 @@ className="ml-8 w-10 h-10 filter brightness-100 sepia saturate-250 hue-rotate-30
         }`}>
             <ul className="flex flex-col items-center gap-4 py-4">
           <li className="hover:text-(--accent) cursor-pointer transition"><Link to="/">Home</Link></li>
+           <li className='hover:text-(--accent) cursor-pointer transition'><Link to="/orders">My Orders</Link></li>
+
           <li className="hover:text-(--accent) cursor-pointer transition"><Link to="/about">About</Link></li>
           <li className="hover:text-(--accent) cursor-pointer transition"><Link to="/contact">Contact</Link></li>
+    <li className='hover:text-(--accent) cursor-pointer transition'><Link to="/admin">Admin</Link></li>
+
         </ul>
      </div>   
 
