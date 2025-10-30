@@ -128,7 +128,7 @@ const selectedAddress =
             <span>Grand Total</span>
             <span>₹{grandTotal.toFixed(2)}</span>
           </div>
-          <button onClick={handlePlaceOrder}  className="mt-4 w-full bg-(--dark) mb-1 text-white py-3 rounded-xl font-semibold ">
+          <button onClick={handlePlaceOrder}  className="mt-4 w-full bg-(--dark) mb-1 text-white py-3 rounded-xl font-semibold cursor-pointer">
             Place Order
           </button>
         </div>
@@ -146,12 +146,12 @@ const selectedAddress =
             <h3 className="text-xl font-bold mb-3">
               Order Placed Successfully 
             </h3>
-            <p className=" mb-6">Track your order in “My Orders”.</p>
+            <Link to ='/ordertrack'> <p className="underline mb-6">Track your order .</p></Link>
             <button
               onClick={() => setPopup(false)}
               className="bg-(--dark) text-white py-2 px-5 rounded-md "
             >
-              <Link to ='/orders'>View My Orders</Link>
+              <Link to ='/'>Continue shopping</Link>
             </button>
           </div>
         </div>

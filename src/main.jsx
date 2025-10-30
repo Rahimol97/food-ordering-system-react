@@ -16,9 +16,10 @@ import Contact from "./pages/Contact";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import Account from "./components/SigninSignup.jsx";
-import Admin from "./pages/Admin.jsx";
+import AdminPanel from "./admin/AdminPanel.jsx";
 import Orders from "./pages/Orders.jsx";
 import ShipAddressForm from "./components/ShipAddressForm.jsx";
+import Ordertrack from "./components/Ordertrack.jsx";
 
 
 const router = createBrowserRouter([
@@ -33,9 +34,10 @@ children:[
       { path: "cart", element: <Cart /> },
       { path: "checkout", element: <Checkout /> },
       { path: "account", element: <Account /> },
-      { path: "admin", element: <Admin /> },
+      { path: "admin", element: <AdminPanel /> },
       { path: "orders", element: <Orders /> },
        { path: "shipaddress", element:  <ShipAddressForm /> },
+       { path: "ordertrack", element:  <Ordertrack /> },
 
 ],
 

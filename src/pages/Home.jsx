@@ -8,8 +8,13 @@ function Home() {
 const [category , setCategory] = useState(null);
 const [search , setSearch] =useState("");
 const menuRef = useRef(null);
+
+const storedProducts = JSON.parse(localStorage.getItem("customProducts")) || [];
+
+
+const allFoods = [...food_list, ...storedProducts];
 //category filter
-const CategoryFoods= category ? food_list.filter(food => food.category === category) : food_list;
+const CategoryFoods= category ?allFoods.filter(food => food.category === category) :allFoods;
 //search bar filter
 
 const searchFilteredFoods = search ? CategoryFoods.filter(food=>food.name.toLowerCase().includes(search.toLowerCase())):CategoryFoods

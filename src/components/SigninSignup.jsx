@@ -72,6 +72,16 @@ function SigninSignup() {
         const response = await fetch(`${api_url}?email=${email}&password=${password}`);
         const data = await response.json();
         if (data.length > 0) {
+           const user = data[0];
+           //  Check if this user is blocked
+          const blockedUsers = JSON.parse(localStorage.getItem("blockedUsers")) || [];
+         
+
+          if (blockedUsers.includes(user.username)) {
+            setMessage("Your account has been blocked by the admin.");
+            setLoading(false);
+            return;
+          }
           setEmail("")
           setPassword("")
           localStorage.setItem("loggedInUser", JSON.stringify(data[0]));

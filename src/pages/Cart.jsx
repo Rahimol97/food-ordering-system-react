@@ -8,10 +8,9 @@ import { food_list } from "../assets/images/assets";
 function Cart() {
 const dispatch = useDispatch();
   const count = useSelector((state) => state.cart.items);
-
-
-  const cartItems =food_list.filter((item) => count[item._id] > 0);
-
+const storedProducts = JSON.parse(localStorage.getItem("customProducts")) || [];
+const allFoods = [...food_list, ...storedProducts];
+  const cartItems =allFoods.filter((item) => count[item._id] > 0);
   const subtotal = cartItems.reduce(
     (acc, item) => acc + item.price * count[item._id],
     0
