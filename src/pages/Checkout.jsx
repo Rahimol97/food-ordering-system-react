@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import {assets, food_list} from '../assets/images/assets'
@@ -10,14 +10,52 @@ function Checkout() {
   const [address, setAddress] = useState("home");
   const [payment, setPayment] = useState("card");
   const [popup, setPopup] = useState(false);
+  const [saveAddress, setSaveAddress] = useState({});
   const location = useLocation();
 
   const grandTotal = location.state?.grandTotal || 0;
    const count = useSelector((state) => state.cart.items);
-  const cartItems = food_list.filter((item) => count[item._id] > 0);
-     const saveaddress=JSON.parse(localStorage.getItem("shippingAddress")) || {};
-const selectedAddress =
-  address === "home" ? saveaddress.home : saveaddress.office;
+
+   const storedProducts = JSON.parse(localStorage.getItem("customProducts")) || [];
+   const allFoods = [...food_list, ...storedProducts];
+   
+  const cartItems = allFoods.filter((item) => count[item._id] > 0);
+  const user = JSON.parse(localStorage.getItem("loggedInUser"));
+
+  const defaultAddresses = {
+    home: {
+      firstName: "swathi",
+      lastName: "das",
+      address: "123, MG Road, Palayam",
+      city: "Trivandrum",
+      state: "Kerala",
+      postalCode: "695001",
+    },
+    office: {
+      firstName: "swathi",
+      lastName: "das",
+      address: "45, Tech Park, Whitefield",
+      city: "Chennai",
+      state: "Tamil Nadu",
+      postalCode: "600001",
+    },
+  };
+
+ useEffect(() => {
+    const stored = JSON.parse(localStorage.getItem("shippingAddress")) || {};
+
+    // Merge defaults if missing
+    const merged = {
+      home: stored.home || defaultAddresses.home,
+      office: stored.office || defaultAddresses.office,
+    };
+
+    setSaveAddress(merged);
+    localStorage.setItem("shippingAddress", JSON.stringify(merged));
+  }, []);
+
+  const selectedAddress =
+  address === "home" ? saveAddress.home : saveAddress.office;
 
   const handlePlaceOrder = () => {
     const orderId = Date.now();
@@ -29,6 +67,7 @@ const selectedAddress =
 
     const newOrder = {
       orderId,
+      user:user.username,
       date: formattedDate,
       address: selectedAddress,
       payment: payment,
@@ -40,10 +79,12 @@ const selectedAddress =
         subtotal: item.price * count[item._id],
       })),
       grandTotal,
+
     };
 
     // Save to localStorage
     const existingOrders = JSON.parse(localStorage.getItem("orders")) || [];
+
     localStorage.setItem("orders", JSON.stringify([...existingOrders, newOrder]));
 
     // Show success popup
@@ -76,11 +117,10 @@ const selectedAddress =
                <Edit2 className="w-5 h-5 text-gray-600 hover:text-(--dark) transition" />
 </Link>
             </div>
-           <p className="leading-relaxed">
- { saveaddress?.home
-    ? `${saveaddress.home.firstName} ${saveaddress.home.lastName}, ${saveaddress.home.address}, ${saveaddress.home.city}, ${saveaddress.home.state}, ${saveaddress.home.postalCode}`
-    : "123, 788, MG Road, Palayam, Trivandrum"}
-</p>
+          <p className="leading-relaxed">
+              {saveAddress?.home &&
+                `${saveAddress.home.firstName} ${saveAddress.home.lastName}, ${saveAddress.home.address}, ${saveAddress.home.city}, ${saveAddress.home.state}, ${saveAddress.home.postalCode}`}
+            </p>
 
           </div>
 
@@ -98,9 +138,10 @@ const selectedAddress =
              <Edit2 className="w-5 h-5 text-gray-600 hover:text-(--dark) transition" />
 </Link>
             </div>
-            { saveaddress?.office
-    ? `${saveaddress.office.firstName} ${saveaddress.office.lastName}, ${saveaddress.office.address}, ${saveaddress.office.city}, ${saveaddress.office.state}, ${saveaddress.office.postalCode}`
-    : "45, Tech Park, Whitefield, Chennai"}
+         <p className="leading-relaxed">
+              {saveAddress?.office &&
+                `${saveAddress.office.firstName} ${saveAddress.office.lastName}, ${saveAddress.office.address}, ${saveAddress.office.city}, ${saveAddress.office.state}, ${saveAddress.office.postalCode}`}
+            </p>
           </div>
         </div>
 

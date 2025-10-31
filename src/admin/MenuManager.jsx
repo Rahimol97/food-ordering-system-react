@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { food_list } from  '../assets/images/assets'
-
-
+import { food_list } from "../assets/images/assets";
 
 const categories = [
   "Salad",
@@ -14,10 +12,9 @@ const categories = [
   "Noodles",
 ];
 
-
 const MenuManager = () => {
   const [product, setProduct] = useState({
-     _id: "",
+    _id: "",
     name: "",
     price: "",
     category: "",
@@ -28,18 +25,16 @@ const MenuManager = () => {
   const [products, setProducts] = useState([]);
   const [editIndex, setEditIndex] = useState(null);
 
-  // Load products from localStorage and combine with static food_list
+  // Load products from localStorage + static list
   useEffect(() => {
     const stored = JSON.parse(localStorage.getItem("customProducts")) || [];
     setProducts([...food_list, ...stored]);
   }, []);
 
-  // Handle input change
   const handleChange = (e) => {
     setProduct({ ...product, [e.target.name]: e.target.value });
   };
 
-  // Handle image upload (convert to Base64 for localStorage)
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
     const reader = new FileReader();
@@ -49,7 +44,6 @@ const MenuManager = () => {
     if (file) reader.readAsDataURL(file);
   };
 
-  // Add or Update product
   const handleAddOrUpdate = () => {
     if (!product.name || !product.price || !product.category) {
       alert("Please fill all required fields!");
@@ -59,19 +53,17 @@ const MenuManager = () => {
     const stored = JSON.parse(localStorage.getItem("customProducts")) || [];
 
     if (editIndex !== null) {
-      // Update product
       stored[editIndex - food_list.length] = product;
       alert("Menu updated successfully!");
     } else {
-      // Add new product
-      stored.push({ ...product, _id: Date.now()});
+      stored.push({ ...product, _id: Date.now() });
       alert("Menu added successfully!");
     }
 
     localStorage.setItem("customProducts", JSON.stringify(stored));
     setProducts([...food_list, ...stored]);
     setProduct({
-       _id:"",
+      _id: "",
       name: "",
       price: "",
       category: "",
@@ -81,14 +73,13 @@ const MenuManager = () => {
     setEditIndex(null);
   };
 
-  // Edit product
   const handleEdit = (index) => {
     const selected = products[index];
     setProduct(selected);
     setEditIndex(index);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  // Delete product (from static or local)
   const handleDelete = (index) => {
     if (index < food_list.length) {
       alert("Cannot remove static product!");
@@ -102,33 +93,33 @@ const MenuManager = () => {
   };
 
   return (
-    <div className="md:w-1/2 md:mx-auto  shadow p-6 mt-8 rounded-lg">
-            <h2 className="text-xl font-bold text-center mb-4">
-        {editIndex !== null ? " Edit Menu" : " Add Menu"}
+    <div className="w-full max-w-4xl mx-auto mt-6  shadow-md rounded-2xl p-6">
+      <h2 className="text-2xl font-bold text-center mb-6 ">
+        {editIndex !== null ? "Edit Menu Item" : "Add Menu Item"}
       </h2>
 
-      {/* Add Product Form */}
-      <div className="grid grid-cols-2 gap-4">
+      {/* Form Section */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <input
           name="name"
           value={product.name}
           onChange={handleChange}
-          placeholder="Product Name"
-          className="border p-2 rounded"
+          placeholder="Menu Name"
+          className="border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-(--dark)"
         />
         <input
           name="price"
           value={product.price}
           onChange={handleChange}
           placeholder="Price"
-          type="number"
-          className="border p-2 rounded"
+          type="text"
+          className="border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-(--dark)"
         />
         <select
           name="category"
           value={product.category}
           onChange={handleChange}
-          className="border p-2 rounded col-span-2"
+          className="border border-gray-300 p-3 rounded-lg col-span-1 sm:col-span-2 focus:outline-none focus:ring-2 focus:ring-(--dark)"
         >
           <option value="">Select Category</option>
           {categories.map((c, i) => (
@@ -137,75 +128,85 @@ const MenuManager = () => {
             </option>
           ))}
         </select>
-       
 
         <input
           type="file"
           accept="image/*"
           onChange={handleImageUpload}
-          className="border p-2 rounded col-span-2"
+          className="border border-gray-300 p-3 rounded-lg col-span-1 sm:col-span-2"
         />
+
         <textarea
           name="description"
           value={product.description}
           onChange={handleChange}
           placeholder="Description"
-          className="border p-2 rounded col-span-2"
+          className="border border-gray-300 p-3 rounded-lg col-span-1 sm:col-span-2 focus:outline-none focus:ring-2 focus:ring-(--dark)"
+          rows="3"
         />
       </div>
 
       <button
         onClick={handleAddOrUpdate}
-        className="bg-(--dark) text-white px-4 py-2 mt-4 rounded w-full"
+        className="bg-(--dark) text-white w-full mt-6 py-3 rounded-lg font-semibold hover:opacity-90 transition"
       >
         {editIndex !== null ? "Update Menu" : "Add Menu"}
       </button>
 
       {/* Product List */}
-      <h3 className="text-lg font-semibold mt-6 mb-2">Menu List</h3>
-      <div className="overflow-x-auto">
-        <table className="w-full border-collapse">
-          <thead>
-            <tr className=" text-left">
-              <th className="border p-2">Image</th>
-              <th className="border p-2">Name</th>
-              <th className="border p-2">Category</th>
-              <th className="border p-2">Price</th>
-              <th className="border p-2">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {products.map((p, i) => (
-              <tr key={i} >
-                <td className="border p-2">
-                  <img
-                    src={p.image}
-                    alt={p.name}
-                    className="w-12 h-12 object-cover rounded"
-                  />
-                </td>
-                <td className="border p-2">{p.name}</td>
-                <td className="border p-2">{p.category}</td>
-                <td className="border p-2">₹{p.price}</td>
-                <td className="border p-2 space-x-2">
-                  <button
-                    onClick={() => handleEdit(i)}
-                    className="bg-(--dark) text-white px-2 py-1 rounded text-sm"
-                  >
-                    Edit
-                  </button>
-                  <button
-                    onClick={() => handleDelete(i)}
-                    className="bg-red-500 text-white px-2 py-1 rounded text-sm"
-                  >
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <h3 className="text-xl font-semibold mt-8 mb-3 ">
+        Menu List
+      </h3>
+
+    <div className="overflow-x-auto">
+  <table className="min-w-full border border-gray-200 text-sm md:text-base rounded-lg overflow-hidden">
+    <thead className="bg-gray-100 text-gray-700">
+      <tr>
+        <th className="p-3 border text-left font-semibold">Image</th>
+        <th className="p-3 border text-left font-semibold">Name</th>
+        <th className="p-3 border text-left font-semibold">Category</th>
+        <th className="p-3 border text-left font-semibold">Price</th>
+        <th className="p-3 border text-center font-semibold">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {products.map((p, i) => (
+        <tr
+          key={i}
+          className="transition-all duration-300  hover:shadow-md hover:scale-[1.01]"
+        >
+          <td className="p-3 border text-center">
+            <img
+              src={p.image}
+              alt={p.name}
+              className="w-12 h-12 mx-auto object-cover rounded-lg"
+            />
+          </td>
+          <td className="p-3 border">{p.name}</td>
+          <td className="p-3 border">{p.category}</td>
+          <td className="p-3 border font-medium ">
+            ₹{p.price}
+          </td>
+          <td className="p-3 border text-center space-x-2">
+            <button
+              onClick={() => handleEdit(i)}
+              className="bg-(--dark) text-white px-3 py-1 rounded-lg text-sm hover:opacity-90 transition"
+            >
+              Edit
+            </button>
+            <button
+              onClick={() => handleDelete(i)}
+              className="bg-red-500 text-white px-3 py-1 rounded-lg text-sm hover:opacity-90 transition"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+ 
     </div>
   );
 };

@@ -3,10 +3,19 @@ import React, { useEffect, useState } from "react";
 function MyOrders() {
   const [orders, setOrders] = useState([]);
 
-  useEffect(() => {
-    const savedOrders = JSON.parse(localStorage.getItem("orders")) || [];
-    setOrders(savedOrders);
-  }, []);
+useEffect(() => {
+  const user = JSON.parse(localStorage.getItem("loggedInUser")); // get current user
+  const allOrders = JSON.parse(localStorage.getItem("orders")) || [];
+// console.log(allOrders);
+  const userOrders = allOrders.filter(
+    (order) => order.user === user?.username
+  );
+
+  setOrders(userOrders);
+}, []);
+
+
+
 
   return (
     <section className="container mx-auto flex-col justify-center  px-4 py-10 mt-16">

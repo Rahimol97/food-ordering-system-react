@@ -7,7 +7,7 @@ function ShipAddressForm() {
   const params = new URLSearchParams(location.search);
   const addressType = params.get("type") || "home";
 
-  const [form, setForm] = useState({
+const defaultAddress = {
     firstName: "",
     lastName: "",
     phone: "",
@@ -15,13 +15,19 @@ function ShipAddressForm() {
     city: "",
     state: "",
     postalCode: "",
-  });
+  };
+
+
+  const [form, setForm] = useState(defaultAddress);
 
  useEffect(() => {
     const saveaddress =
       JSON.parse(localStorage.getItem("shippingAddress")) || {};
     if (saveaddress[addressType]) {
       setForm(saveaddress[addressType]);
+    }
+    else {
+      setForm(defaultAddress);
     }
   }, [addressType]);
 

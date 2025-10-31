@@ -1,60 +1,58 @@
 import React, { useState } from "react";
 import MenuManager from "./MenuManager";
 import AccountManager from "./AccountManager";
-import { Menu, X } from "lucide-react"; 
+import OrdersManager from "./OrdersManager";
 
 const Admin = () => {
   const [activeTab, setActiveTab] = useState("addProduct");
-  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <div className="min-h-screen flex flex-col md:flex-row bg-gray-100">
-      {/* Mobile Header */}
-      <div className="md:hidden bg-gray-800 text-white flex justify-between items-center p-4 mt-16">
-        <h2 className="text-lg font-bold">Admin Panel</h2>
-        <button onClick={() => setMenuOpen(!menuOpen)} className="focus:outline-none">
-          {menuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
-      </div>
+    <div className="min-h-screen  flex flex-col items-center pt-20 px-4">
+      <div className="w-full max-w-6xl  shadow-md rounded-xl flex flex-col sm:flex-row justify-between items-center p-4 mb-6">
+        <h2 className="text-2xl font-bold  mb-2 sm:mb-0">
+          Admin Panel
+        </h2>
 
-      {/* Sidebar */}
-      <div
-        className={`${
-          menuOpen ? "block" : "hidden"
-        } md:block md:w-64 bg-gray-800 text-white p-6 absolute md:static top-14 left-0 h-full md:h-auto z-20 transition-all`}
-      >
-        <h2 className="text-xl font-bold mb-6 hidden md:block">Admin Panel</h2>
-        <ul className=" mt-19 space-y-10">
-          <li
-            className={`cursor-pointer ${
-              activeTab === "addProduct" && "text-green-400 font-semibold"
+       
+        <div className="flex flex-wrap justify-center gap-3">
+          <button
+            onClick={() => setActiveTab("addProduct")}
+            className={`px-4 py-2 rounded-lg font-semibold transition-all ${
+              activeTab === "addProduct"
+                ? "bg-(--dark) text-white shadow"
+                : "bg-gray-200 text-gray-700 hover:bg-gray-300"
             }`}
-            onClick={() => {
-              setActiveTab("addProduct");
-              setMenuOpen(false);
-            }}
           >
             Add Menu
-          </li>
-           <li
-            className={`cursor-pointer ${
-              activeTab === "userlist" && "text-green-400 font-semibold"
+          </button>
+          <button
+            onClick={() => setActiveTab("userlist")}
+            className={`px-4 py-2 rounded-lg font-semibold transition-all ${
+              activeTab === "userlist"
+                ? "bg-(--dark) text-white shadow"
+                : "bg-gray-200 text-gray-700 hover:bg-gray-300"
             }`}
-            onClick={() => {
-              setActiveTab("userlist");
-              setMenuOpen(false);
-            }}
           >
-            User list
-          </li>
-          {/* You can add more menu items later */}
-        </ul>
+            User List
+          </button>
+           <button
+            onClick={() => setActiveTab("orderlist")}
+            className={`px-4 py-2 rounded-lg font-semibold transition-all ${
+              activeTab === "orderlist"
+                ? "bg-(--dark) text-white shadow"
+                : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+            }`}
+          >
+            Order List
+          </button>
+        </div>
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 p-4 md:p-6 mt-14 md:mt-0 overflow-y-auto">
+      <div className="w-full max-w-6xl  shadow-md rounded-xl p-6">
         {activeTab === "addProduct" && <MenuManager />}
         {activeTab === "userlist" && <AccountManager />}
+        {activeTab === "orderlist" && <OrdersManager />}
       </div>
     </div>
   );
