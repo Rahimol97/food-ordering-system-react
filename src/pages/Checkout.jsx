@@ -35,6 +35,7 @@ function Checkout() {
     home: {
       firstName: "swathi",
       lastName: "das",
+      phone : "00087690654",
       address: "123, MG Road, Palayam",
       city: "Trivandrum",
       state: "Kerala",
@@ -43,6 +44,7 @@ function Checkout() {
     office: {
       firstName: "swathi",
       lastName: "das",
+      phone : "00087690654",
       address: "45, Tech Park, Whitefield",
       city: "Chennai",
       state: "Tamil Nadu",
