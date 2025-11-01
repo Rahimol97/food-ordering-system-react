@@ -19,9 +19,13 @@ function Menu({ foodItems, category, search }) {
         </p>
       ) : (
 
-
+        
         <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 '>
-          {foodItems.map((menu, index) => (
+          {foodItems.map((menu, index) =>{
+     
+          const quantity = count[menu._id] || 0;
+
+         return (
 
             <div key={index} className=' shadow-md rounded-2xl bg-white overflow-hidden transition-transform duration-300 hover:scale-105'>
               <img src={menu.image}
@@ -31,7 +35,18 @@ function Menu({ foodItems, category, search }) {
                   <div className='flex justify-between items-center mb-2'>
                     <h3 className="text-xl font-semibold text-(--dark) mb-2">
                       {menu.name} </h3>
+
                     <div className="flex items-center gap-2 overflow-hidden">
+                     {quantity === 0 ? ( 
+                      // Show "Add to Cart" button
+                           <button
+                            onClick={() => dispatch(addItem(menu._id))}
+                            className="px-3 py-1 bg-(--orange) text-white rounded-md text-sm font-medium transition hover:bg-orange-600"
+                          >
+                            Add to Cart
+                          </button>
+                        ) :(
+                            <div className="flex items-center gap-2">
                       <button
                         onClick={() => dispatch(removeItem(menu._id))}
                         className="w-7 h-10 flex items-center justify-center transition"
@@ -39,7 +54,7 @@ function Menu({ foodItems, category, search }) {
                         <img src={assets.remove_icon_red} alt="add icon" />
                       </button>
                       <span className="w-6 h-8 flex items-center justify-center text-(--dark) font-semibold">
-                        {count[menu._id] || 0}
+                        {quantity}
                       </span>
                       <button
                         onClick={() => dispatch(addItem(menu._id))}
@@ -50,6 +65,8 @@ function Menu({ foodItems, category, search }) {
 
                       </button>
                     </div>
+                        )}
+                         </div>
                   </div>
                   <div className="flex items-center justify-between mb-3">
                     <span className="text-lg font-bold text-(--orange)">
@@ -63,7 +80,8 @@ function Menu({ foodItems, category, search }) {
 
               </div>
             </div>
-          ))}
+              );
+})}
         </div>
       )}
     </section>

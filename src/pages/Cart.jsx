@@ -2,7 +2,7 @@ import React from "react";
 import { assets } from "../assets/images/assets";
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
-import { addItem, removeItem, deleteItem } from "../redux/cartSlice";
+import { addItem, removeItem, deleteItem, clearCart } from "../redux/cartSlice";
 import { food_list } from "../assets/images/assets";
 
 function Cart() {
@@ -90,6 +90,7 @@ function Cart() {
                       className="w-8"
                     />
                   </button>
+     
                 </div>
 
 
@@ -110,6 +111,11 @@ function Cart() {
                 </div>
               </div>
             ))}
+            <div className="flex justify-end mt-3">
+              <button onClick={() => dispatch(clearCart())} className="px-4  py-2 rounded-lg shadow-lg  bg-(--accent) cursor-pointer">
+                      Empty cart
+                    </button>
+                 </div>    
           </div>
 
 
