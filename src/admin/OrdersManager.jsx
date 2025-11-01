@@ -46,7 +46,7 @@ const OrderHistory = () => {
       <div className="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
         <input
           type="text"
-          placeholder="Filter by name"
+          placeholder="Filter by Name on Shipping"
           value={filter}
           onChange={(e) => setFilter(e.target.value)}
           className="border rounded-lg px-4 py-2 w-full md:w-1/3"
