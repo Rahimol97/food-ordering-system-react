@@ -3,16 +3,16 @@ import React, { useEffect, useState } from "react";
 function MyOrders() {
   const [orders, setOrders] = useState([]);
 
-useEffect(() => {
-  const user = JSON.parse(localStorage.getItem("loggedInUser")); // get current user
-  const allOrders = JSON.parse(localStorage.getItem("orders")) || [];
-// console.log(allOrders);
-  const userOrders = allOrders.filter(
-    (order) => order.user === user?.username
-  );
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("loggedInUser")); // get current user
+    const allOrders = JSON.parse(localStorage.getItem("orders")) || []; // get all orders 
+    // console.log(allOrders);
+    const userOrders = allOrders.filter(
+      (order) => order.user === user?.username
+    );
 
-  setOrders(userOrders);
-}, []);
+    setOrders(userOrders);
+  }, []);
 
 
 
@@ -25,12 +25,12 @@ useEffect(() => {
         <p className="text-center text-lg">No orders found yet.</p>
       ) : (
         <div className=" md:w-1/2  md:mx-auto space-y-8 ">
-          { [...orders].reverse().map((order, index) => (
+          {[...orders].reverse().map((order, index) => (
             <div
               key={index}
               className="rounded-xl shadow-lg p-6 flex flex-col gap-4"
             >
-           
+
               <div className="flex flex-col sm:flex-row justify-between  sm:items-center border-b pb-3">
                 <div>
                   <h3 className="font-bold text-xl ">
@@ -42,12 +42,12 @@ useEffect(() => {
                   <p className="text-sm text-gray-700">
                     Shipping to: <span className="font-medium">{order.address.address} {order.address.city} {order.address.state} {order.address.postalCode} </span>
                   </p>
-                   <p className="text-gray-700 text-sm">Payment Method :{order.payment}</p>
+                  <p className="text-gray-700 text-sm">Payment Method :{order.payment}</p>
 
                 </div>
               </div>
 
-           
+
               <div className="space-y-3">
                 {order.items.map((item, idx) => (
                   <div
@@ -76,10 +76,10 @@ useEffect(() => {
                 Grand Total: ₹ {order.grandTotal.toFixed(2)}
               </div>
             </div>
-          
+
           ))}
         </div>
-        
+
       )}
     </section>
   );

@@ -8,17 +8,18 @@ import { ChevronDown, Sun, Moon, ShoppingBag } from "lucide-react";
 function Navbar() {
   const navigate = useNavigate();
   const [isDark, setIsDark] = useState(false);
-  const user = JSON.parse(localStorage.getItem("loggedInUser"));
+  const user = JSON.parse(localStorage.getItem("loggedInUser")); //get current user
 
-  const Orders = JSON.parse(localStorage.getItem("orders")) || [];
+  const Orders = JSON.parse(localStorage.getItem("orders")) || []; // get all orders from local storage
 
-const userOrderCount = user ? Orders.filter(
-  (order) => order.user === user.username
-).length : 0;
+  const userOrderCount = user ? Orders.filter(
+    (order) => order.user === user.username
+  ).length : 0;                                    
 
   const [open, setOpen] = useState(false);
   const [useropen, setUseropen] = useState(false)
   const count = useSelector((state) => state.cart.items);
+
   const totalItems = Object.values(count).reduce((a, b) => a + b, 0);
 
   useEffect(() => {
@@ -85,12 +86,12 @@ const userOrderCount = user ? Orders.filter(
           >
             {isDark ? (
               <>
-                <Sun className="w-7 h-7 text-yellow-400" />
+                <Sun className="w-6 h-6 text-yellow-400" />
 
               </>
             ) : (
               <>
-                <Moon className="w-7 h-7 text-white" />
+                <Moon className="w-6 h-6 text-white" />
 
               </>
             )}
@@ -105,7 +106,7 @@ const userOrderCount = user ? Orders.filter(
                 <img
                   src={assets.profileicon}
                   alt="Profile"
-                  className="w-10 h-10 rounded-full   shadow-md "
+                  className="w-8 h-8 rounded-full   shadow-md "
                 />
                 <ChevronDown
                   className={`transition-transform duration-200 text-white ${useropen ? "rotate-180" : ""
@@ -156,7 +157,7 @@ const userOrderCount = user ? Orders.filter(
 
         </div>
 
-        <ul className='hidden md:flex gap-8 text-lg'>
+        <ul className='hidden md:flex items-center gap-8 text-lg'>
           <li className='hover:text-(--accent) cursor-pointer transition'><Link to="/">Home</Link></li>
           <li className='hover:text-(--accent) cursor-pointer transition'><button onClick={() => handleNavigateClick("orders")}>My Orders</button> </li>
           <li className="hover:text-(--accent) cursor-pointer transition"><Link to="/about">About</Link></li>
@@ -174,11 +175,11 @@ const userOrderCount = user ? Orders.filter(
 
           <button
             onClick={() => setIsDark(!isDark)}
-            className="flex items-center  rounded-lg  dark:bg-gray-700 hover:opacity-90 transition"
+            className="flex items-center  rounded-lg   hover:opacity-90 transition"
           >
             {isDark ? (
               <>
-                <Sun className="w-8 h-8 text-yellow-400" />
+                <Sun className="w-8 h-8   text-yellow-400" />
 
               </>
             ) : (
@@ -200,7 +201,7 @@ const userOrderCount = user ? Orders.filter(
                 <img
                   src={assets.profileicon}
                   alt="Profile"
-                  className="w-10 h-10 rounded-full   shadow-md "
+                  className="w-7 h-7 rounded-full   shadow-md "
                 />
                 <ChevronDown
                   className={`transition-transform duration-200 text-white ${useropen ? "rotate-180" : ""

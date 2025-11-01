@@ -158,55 +158,55 @@ const MenuManager = () => {
         Menu List
       </h3>
 
-    <div className="overflow-x-auto">
-  <table className="min-w-full border border-gray-200 text-sm md:text-base rounded-lg overflow-hidden">
-    <thead className="bg-gray-100 text-gray-700">
-      <tr>
-        <th className="p-3 border text-left font-semibold">Image</th>
-        <th className="p-3 border text-left font-semibold">Name</th>
-        <th className="p-3 border text-left font-semibold">Category</th>
-        <th className="p-3 border text-left font-semibold">Price</th>
-        <th className="p-3 border text-center font-semibold">Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      {products.map((p, i) => (
-        <tr
-          key={i}
-          className="transition-all duration-300  hover:shadow-md hover:scale-[1.01]"
-        >
-          <td className="p-3 border text-center">
-            <img
-              src={p.image}
-              alt={p.name}
-              className="w-12 h-12 mx-auto object-cover rounded-lg"
-            />
-          </td>
-          <td className="p-3 border">{p.name}</td>
-          <td className="p-3 border">{p.category}</td>
-          <td className="p-3 border font-medium ">
-            ₹{p.price}
-          </td>
-          <td className="p-3 border text-center space-x-2">
-            <button
-              onClick={() => handleEdit(i)}
-              className="bg-(--dark) text-white px-3 py-1 rounded-lg text-sm hover:opacity-90 transition"
-            >
-              Edit
-            </button>
-            <button
-              onClick={() => handleDelete(i)}
-              className="bg-red-500 text-white px-3 py-1 rounded-lg text-sm hover:opacity-90 transition"
-            >
-              Delete
-            </button>
-          </td>
-        </tr>
-      ))}
-    </tbody>
-  </table>
-</div>
- 
+      <div className="overflow-x-auto">
+        <table className="min-w-full border border-gray-200 text-sm md:text-base rounded-lg overflow-hidden">
+          <thead className="bg-gray-100 text-gray-700">
+            <tr>
+              <th className="p-3 border text-left font-semibold">Image</th>
+              <th className="p-3 border text-left font-semibold">Name</th>
+              <th className="p-3 border text-left font-semibold">Category</th>
+              <th className="p-3 border text-left font-semibold">Price</th>
+              <th className="p-3 border text-center font-semibold">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {products.map((p, i) => (
+              <tr
+                key={i}
+                className="transition-all duration-300  hover:shadow-md hover:scale-[1.01]"
+              >
+                <td className="p-3 border text-center">
+                  <img
+                    src={p.image}
+                    alt={p.name}
+                    className="w-12 h-12 mx-auto object-cover rounded-lg"
+                  />
+                </td>
+                <td className="p-3 border">{p.name}</td>
+                <td className="p-3 border">{p.category}</td>
+                <td className="p-3 border font-medium ">
+                  ₹{p.price}
+                </td>
+                <td className="p-3 border text-center space-x-2">
+                  <button
+                    onClick={() => handleEdit(i)}
+                    className="bg-(--dark) text-white px-3 py-1 rounded-lg text-sm hover:opacity-90 transition"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    onClick={() => handleDelete(i)}
+                    className="bg-red-500 text-white px-3 py-1 rounded-lg text-sm hover:opacity-90 transition"
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
     </div>
   );
 };

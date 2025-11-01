@@ -1,13 +1,13 @@
-import React, { useState ,useEffect} from "react";
-import { useNavigate , useLocation} from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 function ShipAddressForm() {
-    const navigate = useNavigate();
-    const location = useLocation();
+  const navigate = useNavigate();
+  const location = useLocation();
   const params = new URLSearchParams(location.search);
   const addressType = params.get("type") || "home";
 
-const defaultAddress = {
+  const defaultAddress = {
     firstName: "",
     lastName: "",
     phone: "",
@@ -20,7 +20,7 @@ const defaultAddress = {
 
   const [form, setForm] = useState(defaultAddress);
 
- useEffect(() => {
+  useEffect(() => {
     const saveaddress =
       JSON.parse(localStorage.getItem("shippingAddress")) || {};
     if (saveaddress[addressType]) {
@@ -38,7 +38,7 @@ const defaultAddress = {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-const savaddress =
+    const savaddress =
       JSON.parse(localStorage.getItem("shippingAddress")) || {};
     savaddress[addressType] = form; // Save under home or office
     localStorage.setItem("shippingAddress", JSON.stringify(savaddress));
@@ -47,14 +47,14 @@ const savaddress =
   };
 
   return (
-<div className="min-h-screen flex justify-center items-center  py-12 px-4">
+    <div className="min-h-screen flex justify-center items-center  py-12 px-4">
       <form
         onSubmit={handleSubmit}
         className=" rounded-2xl shadow-lg p-8 w-full max-w-md space-y-5"
       >
         <h2 className="text-2xl font-bold text-center mb-4">
-       {addressType === "home" ? "Home Address" : "Office Address"}
-       
+          {addressType === "home" ? "Home Address" : "Office Address"}
+
         </h2>
 
         <div className="flex gap-3">
@@ -117,24 +117,24 @@ const savaddress =
             className="w-1/2 border p-2 rounded-md"
             required
           />
-           <input
-          type="text"
-          name="postalCode"
-          placeholder="Postal Code"
-          value={form.postalCode}
-          onChange={handleChange}
-          className="w-1/2 border p-2 rounded-md"
-          required
-        />
+          <input
+            type="text"
+            name="postalCode"
+            placeholder="Postal Code"
+            value={form.postalCode}
+            onChange={handleChange}
+            className="w-1/2 border p-2 rounded-md"
+            required
+          />
         </div>
 
-       
+
 
         <button
           type="submit"
           className="w-full bg-(--dark) text-white py-2 rounded-md font-semibold"
         >
-           Save {addressType === "home" ? "Home" : "Office"} Address
+          Save {addressType === "home" ? "Home" : "Office"} Address
         </button>
       </form>
     </div>

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Eye, EyeOff, Loader2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
-const api_url = "https://user-api-6rny.onrender.com/users";
+const api_url = "https://user-api-6rny.onrender.com/users";  //json api 
 
 function SigninSignup() {
   const navigate = useNavigate();
@@ -25,7 +25,7 @@ function SigninSignup() {
 
     e.preventDefault();
     setMessage("");
-      setLoading(true);
+    setLoading(true);
     if (issignUp) {
       if (password !== confirmPassword) {
         setMessage("Passwords do not match!");
@@ -62,7 +62,7 @@ function SigninSignup() {
         setMessage("try again");
       }
       finally {
-          setLoading(false);
+        setLoading(false);
       }
 
     }
@@ -72,10 +72,10 @@ function SigninSignup() {
         const response = await fetch(`${api_url}?email=${email}&password=${password}`);
         const data = await response.json();
         if (data.length > 0) {
-           const user = data[0];
-           //  Check if this user is blocked
+          const user = data[0];
+          //  Check if this user is blocked
           const blockedUsers = JSON.parse(localStorage.getItem("blockedUsers")) || [];
-         
+
 
           if (blockedUsers.includes(user.username)) {
             setMessage("Your account has been blocked by the admin.");
@@ -97,6 +97,9 @@ function SigninSignup() {
       catch (error) {
         setMessage(" Try again later.");
       }
+       finally {
+        setLoading(false);
+      }
     }
   }
   return (
@@ -105,8 +108,8 @@ function SigninSignup() {
         <div className='flex mb-6  '>
           <button
             className={`flex-1 py-2 text-lg sm:text-xl font-semibold transition-all duration-200 ${!issignUp
-                ? "border-b-4 border-(--dark) "
-                : "text-gray-500"
+              ? "border-b-4 border-(--dark) "
+              : "text-gray-500"
               }`}
             onClick={() => accountinfo("signin")}
           >
@@ -114,8 +117,8 @@ function SigninSignup() {
           </button>
           <button
             className={`flex-1 py-2 text-lg sm:text-xl font-semibold transition-all duration-200 ${issignUp
-                ? "border-b-4 border-(--dark)"
-                : "text-gray-500"
+              ? "border-b-4 border-(--dark)"
+              : "text-gray-500"
 
               }`}
             onClick={() => accountinfo("signup")}
@@ -199,9 +202,8 @@ function SigninSignup() {
           <button
             type="submit"
             disabled={loading}
-            className={`w-full flex justify-center items-center gap-2 bg-(--dark) text-(--light) py-2 rounded-lg text-lg sm:text-xl font-semibold cursor-pointer transition-all duration-200 ${
-              loading ? "opacity-70 cursor-not-allowed" : ""
-            }`}
+            className={`w-full flex justify-center items-center gap-2 bg-(--dark) text-(--light) py-2 rounded-lg text-lg sm:text-xl font-semibold cursor-pointer transition-all duration-200 ${loading ? "opacity-70 cursor-not-allowed" : ""
+              }`}
           >
             {loading ? (
               <>

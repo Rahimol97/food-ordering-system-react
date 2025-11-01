@@ -59,26 +59,24 @@ const UserList = () => {
               return (
                 <tr
                   key={user.id}
-                 
+
                 >
                   <td className="p-3 border">{user.username}</td>
                   <td className="p-3 border">{user.email}</td>
                   <td className="p-3 border">{user.password}</td>
                   <td
-                    className={`p-3 border text-center font-semibold ${
-                      isBlocked ? "text-red-600" : "text-green-600"
-                    }`}
+                    className={`p-3 border text-center font-semibold ${isBlocked ? "text-red-600" : "text-green-600"
+                      }`}
                   >
                     {isBlocked ? "Blocked" : "Active"}
                   </td>
                   <td className="p-3 border text-center">
                     <button
                       onClick={() => toggleBlock(user.username)}
-                      className={`px-4 py-1.5 rounded-lg font-medium text-white transition-all ${
-                        isBlocked
+                      className={`px-4 py-1.5 rounded-lg font-medium text-white transition-all ${isBlocked
                           ? "bg-green-500 hover:bg-green-600"
                           : "bg-red-500 hover:bg-red-600"
-                      }`}
+                        }`}
                     >
                       {isBlocked ? "Unblock" : "Block"}
                     </button>
@@ -93,7 +91,7 @@ const UserList = () => {
       {/* Mobile-friendly info */}
       {users.length === 0 && (
         <p className="text-center text-gray-500 mt-4">
-       API not reachable.
+          API not reachable.
         </p>
       )}
     </div>

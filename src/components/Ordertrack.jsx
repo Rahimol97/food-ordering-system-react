@@ -63,7 +63,7 @@ export default function OrderTrack() {
           </p>
         </div>
 
-        
+
         <div className=" rounded-xl text-left mb-6">
           <h3 className="font-semibold mb-1">Delivery Address</h3>
           <p className="text-sm leading-relaxed">
@@ -83,46 +83,44 @@ export default function OrderTrack() {
 
 
 
-      <div className="relative flex flex-col items-start ml-6 mb-8">
+        <div className="relative flex flex-col items-start ml-6 mb-8">
 
-  <div className="absolute left-3 top-0 bottom-0 w-2 bg-gray-200 rounded-full">
-    <div
-      className="absolute left-0 top-0 w-1 bg-green-500 rounded-full transition-all duration-700"
-      style={{
-        height: `${(currentStep / (steps.length - 1)) * 100}%`,
-      }}
-    ></div>
-  </div>
+          <div className="absolute left-3 top-0 bottom-0 w-2 bg-gray-200 rounded-full">
+            <div
+              className="absolute left-0 top-0 w-1 bg-green-500 rounded-full transition-all duration-700"
+              style={{
+                height: `${(currentStep / (steps.length - 1)) * 100}%`,
+              }}
+            ></div>
+          </div>
 
 
-  {steps.map((step, index) => (
-    <div key={index} className="flex items-center mb-8 relative z-10">
-      <div
-        className={`w-8 h-8 rounded-full flex items-center justify-center border-2 mr-6 ${
-          index <= currentStep
-            ? "bg-green-500 border-green-500 text-white"
-            : "bg-gray-200 border-gray-300 text-gray-500"
-        }`}
-      >
-        {index + 1}
-      </div>
-      <p
-        className={`text-sm ${
-          index <= currentStep ? "text-green-600 font-medium" : "text-gray-500"
-        }`}
-      >
-        {step}
-      </p>
-    </div>
-  ))}
-</div>
+          {steps.map((step, index) => (
+            <div key={index} className="flex items-center mb-8 relative z-10">
+              <div
+                className={`w-8 h-8 rounded-full flex items-center justify-center border-2 mr-6 ${index <= currentStep
+                    ? "bg-green-500 border-green-500 text-white"
+                    : "bg-gray-200 border-gray-300 text-gray-500"
+                  }`}
+              >
+                {index + 1}
+              </div>
+              <p
+                className={`text-sm ${index <= currentStep ? "text-green-600 font-medium" : "text-gray-500"
+                  }`}
+              >
+                {step}
+              </p>
+            </div>
+          ))}
+        </div>
 
 
         <div className="mb-4">
           <p className="text-lg">
             <strong>Status:</strong>{" "}
             <span className="text-green-600 font-semibold">
-              {steps[currentStep]} 
+              {steps[currentStep]}
             </span>
           </p>
         </div>

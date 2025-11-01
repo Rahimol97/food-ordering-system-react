@@ -13,35 +13,32 @@ const Admin = () => {
           Admin Panel
         </h2>
 
-       
+
         <div className="flex flex-wrap justify-center gap-3">
           <button
             onClick={() => setActiveTab("addProduct")}
-            className={`px-4 py-2 rounded-lg font-semibold transition-all ${
-              activeTab === "addProduct"
+            className={`px-4 py-2 rounded-lg font-semibold transition-all ${activeTab === "addProduct"
                 ? "bg-(--dark) text-white shadow"
                 : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-            }`}
+              }`}
           >
             Add Menu
           </button>
           <button
             onClick={() => setActiveTab("userlist")}
-            className={`px-4 py-2 rounded-lg font-semibold transition-all ${
-              activeTab === "userlist"
+            className={`px-4 py-2 rounded-lg font-semibold transition-all ${activeTab === "userlist"
                 ? "bg-(--dark) text-white shadow"
                 : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-            }`}
+              }`}
           >
             User List
           </button>
-           <button
+          <button
             onClick={() => setActiveTab("orderlist")}
-            className={`px-4 py-2 rounded-lg font-semibold transition-all ${
-              activeTab === "orderlist"
+            className={`px-4 py-2 rounded-lg font-semibold transition-all ${activeTab === "orderlist"
                 ? "bg-(--dark) text-white shadow"
                 : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-            }`}
+              }`}
           >
             Order List
           </button>

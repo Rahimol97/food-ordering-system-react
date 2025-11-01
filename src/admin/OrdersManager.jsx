@@ -39,7 +39,7 @@ const OrderHistory = () => {
   return (
     <div className="max-w-6xl mx-auto mt-10 p-6  rounded-2xl shadow">
       <h2 className="text-3xl font-bold text-center mb-6 ">
-       Order Track Report
+        Order Track Report
       </h2>
 
       {/* Filters */}
@@ -80,42 +80,42 @@ const OrderHistory = () => {
               sortedOrders.map((order) => (
                 <tr
                   key={order.orderId}
-                
+
                 >
-                   <td className="p-3 border">
-                    {order.user} 
+                  <td className="p-3 border">
+                    {order.user}
                   </td>
                   <td className="p-3 border">
                     {order.address?.firstName} {order.address?.lastName}<br></br> {order.address?.address} {order.address?.city}
-                 {order.address?.state} <br></br>{order.address?.postalCode}
+                    {order.address?.state} <br></br>{order.address?.postalCode}
                   </td>
-              <td className="p-3 border">
-  {order.items && order.items.length > 0 ? (
-    <div className="space-y-2">
-      {order.items.map((i, index) => (
-        <div
-          key={index}
-          className="flex items-center gap-3  p-2 rounded-lg"
-        >
-          <img
-            src={i.image}
-            alt={i.name}
-            className="w-10 h-10 object-cover rounded-md border"
-          />
-          <div className="flex-1">
-            <p className=" font-medium text-sm">{i.name}</p>
-            <p className=" text-xs">₹{i.price} × {i.quantity}</p>
-          </div>
-          <p className="font-semibold text-sm">
-            ₹{i.subtotal}
-          </p>
-        </div>
-      ))}
-    </div>
-  ) : (
-    <p className="text-gray-500 italic">No items</p>
-  )}
-</td>
+                  <td className="p-3 border">
+                    {order.items && order.items.length > 0 ? (
+                      <div className="space-y-2">
+                        {order.items.map((i, index) => (
+                          <div
+                            key={index}
+                            className="flex items-center gap-3  p-2 rounded-lg"
+                          >
+                            <img
+                              src={i.image}
+                              alt={i.name}
+                              className="w-10 h-10 object-cover rounded-md border"
+                            />
+                            <div className="flex-1">
+                              <p className=" font-medium text-sm">{i.name}</p>
+                              <p className=" text-xs">₹{i.price} × {i.quantity}</p>
+                            </div>
+                            <p className="font-semibold text-sm">
+                              ₹{i.subtotal}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <p className="text-gray-500 italic">No items</p>
+                    )}
+                  </td>
                   <td className="p-3 border">{order.date}</td>
                   <td className="p-3 border font-semibold">
                     ₹{order.grandTotal}

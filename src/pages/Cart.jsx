@@ -6,11 +6,14 @@ import { addItem, removeItem, deleteItem } from "../redux/cartSlice";
 import { food_list } from "../assets/images/assets";
 
 function Cart() {
-const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const count = useSelector((state) => state.cart.items);
-const storedProducts = JSON.parse(localStorage.getItem("customProducts")) || [];
-const allFoods = [...food_list, ...storedProducts];
-  const cartItems =allFoods.filter((item) => count[item._id] > 0);
+
+  const storedProducts = JSON.parse(localStorage.getItem("customProducts")) || []; // stored fooditems 
+  const allFoods = [...food_list, ...storedProducts]; // merge both using spread operator
+ 
+  const cartItems = allFoods.filter((item) => count[item._id] > 0); //filter selected food items using id
+
   const subtotal = cartItems.reduce(
     (acc, item) => acc + item.price * count[item._id],
     0
@@ -23,7 +26,7 @@ const allFoods = [...food_list, ...storedProducts];
   return (
     <section className="container mx-auto px-4 py-10 mt-16">
       <h2 className="text-3xl font-bold text-center  mb-10">
-        Your Orders 
+        Your Orders
       </h2>
 
       {cartItems.length === 0 ? (
@@ -32,14 +35,14 @@ const allFoods = [...food_list, ...storedProducts];
         </p>
       ) : (
         <div className="flex flex-col lg:flex-row gap-8">
-         
+
           <div className="flex-1 bg-white shadow-md rounded-xl p-5">
             {cartItems.map((item) => (
               <div
                 key={item._id}
                 className="flex flex-col sm:flex-row sm:items-center justify-between border-b py-4 gap-4"
               >
-               
+
                 <div className="flex items-center gap-4 sm:w-1/3">
                   <img
                     src={item.image}
@@ -56,7 +59,7 @@ const allFoods = [...food_list, ...storedProducts];
                   </div>
                 </div>
 
-              
+
                 <div className="flex items-center justify-center gap-3 sm:w-1/3">
                   <button
                     onClick={() =>
@@ -77,7 +80,7 @@ const allFoods = [...food_list, ...storedProducts];
 
                   <button
                     onClick={() =>
-                       dispatch(addItem(item._id))
+                      dispatch(addItem(item._id))
                     }
                     className="flex items-center justify-center"
                   >
@@ -95,8 +98,8 @@ const allFoods = [...food_list, ...storedProducts];
                     ₹{item.price * count[item._id]}.00
                   </p>
                   <button
-                    onClick={() =>dispatch(deleteItem(item._id))}
-                    
+                    onClick={() => dispatch(deleteItem(item._id))}
+
                   >
                     <img
                       src={assets.cross_icon}
@@ -109,7 +112,7 @@ const allFoods = [...food_list, ...storedProducts];
             ))}
           </div>
 
-         
+
           <div className="w-full lg:w-1/3 bg-white shadow-md rounded-xl p-5 h-fit">
             <h3 className="text-2xl font-semibold text-(--dark) mb-5">
               Order Summary
@@ -135,7 +138,7 @@ const allFoods = [...food_list, ...storedProducts];
             </div>
 
             <button className="mt-6 w-full bg-(--dark)  text-white py-3 rounded-md font-semibold ">
-         <Link to="/checkout" state={{ grandTotal }} >  Proceed to Checkout</Link> 
+              <Link to="/checkout"  >  Proceed to Checkout</Link>
             </button>
           </div>
         </div>
