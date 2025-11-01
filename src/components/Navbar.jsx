@@ -159,13 +159,13 @@ function Navbar() {
 
         <ul className='hidden md:flex items-center gap-8 text-lg'>
           <li className='hover:text-(--accent) cursor-pointer transition'><Link to="/">Home</Link></li>
-          <li className='hover:text-(--accent) cursor-pointer transition'><button onClick={() => handleNavigateClick("orders")}>My Orders</button> </li>
+          <li className='hover:text-(--accent)  transition'><button className='cursor-pointer'  onClick={() => handleNavigateClick("orders")}>My Orders</button> </li>
           <li className="hover:text-(--accent) cursor-pointer transition"><Link to="/about">About</Link></li>
           <li className="hover:text-(--accent) cursor-pointer transition"><Link to="/contact">Contact</Link></li>
-          <li className='hover:text-(--accent) cursor-pointer transition'><button onClick={() => handleNavigateClick("admin")}>Admin</button> </li>
+          <li className='hover:text-(--accent)  transition'><button className='cursor-pointer' onClick={() => handleNavigateClick("admin")}>Admin</button> </li>
 
 
-          <li className=" cursor-pointer  transition group"><button onClick={() => handleNavigateClick("cart")} className='relative'><img className="w-8 h-8 transition duration-300 filter invert brightness-0 saturate-0 group-hover:brightness-150 group-hover:sepia group-hover:saturate-200 group-hover:hue-rotate-20 group-hover:contrast-125" src={assets.basket_icon} />
+          <li className="  transition group"><button  onClick={() => handleNavigateClick("cart")} className='relative cursor-pointer'><img className="w-8 h-8 transition duration-300 filter invert brightness-0 saturate-0 group-hover:brightness-150 group-hover:sepia group-hover:saturate-200 group-hover:hue-rotate-20 group-hover:contrast-125" src={assets.basket_icon} />
             {totalItems > 0 && (
               <span className="absolute -top-2 -right-3 w-6 h-6 bg-red-500 text-white text-xs font-bold rounded-full flex items-center justify-center">
                 {totalItems}
@@ -175,7 +175,7 @@ function Navbar() {
 
           <button
             onClick={() => setIsDark(!isDark)}
-            className="flex items-center  rounded-lg   hover:opacity-90 transition"
+            className="flex items-center  rounded-lg  cursor-pointer hover:opacity-90 transition"
           >
             {isDark ? (
               <>
@@ -263,11 +263,11 @@ function Navbar() {
         }`}>
         <ul className="flex flex-col items-center gap-4 py-4">
           <li className="hover:text-(--accent) cursor-pointer transition"><Link to="/">Home</Link></li>
-          <li className='hover:text-(--accent) cursor-pointer transition'><button onClick={() => handleNavigateClick("orders")}>My Orders</button> </li>
+          <li className='hover:text-(--accent)  transition'><button className='cursor-pointer' onClick={() => handleNavigateClick("orders")}>My Orders</button> </li>
 
           <li className="hover:text-(--accent) cursor-pointer transition"><Link to="/about">About</Link></li>
           <li className="hover:text-(--accent) cursor-pointer transition"><Link to="/contact">Contact</Link></li>
-          <li className='hover:text-(--accent) cursor-pointer transition'><button onClick={() => handleNavigateClick("admin")}>Admin</button></li>
+          <li className='hover:text-(--accent)  transition'><button className='cursor-pointer'  onClick={() => handleNavigateClick("admin")}>Admin</button></li>
 
         </ul>
       </div>

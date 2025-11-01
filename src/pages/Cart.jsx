@@ -65,7 +65,7 @@ function Cart() {
                     onClick={() =>
                       dispatch(removeItem(item._id))
                     }
-                    className=" flex items-center justify-center"
+                    className=" flex items-center justify-center "
                   >
                     <img
                       src={assets.remove_icon_red}
@@ -105,7 +105,7 @@ function Cart() {
                     <img
                       src={assets.cross_icon}
                       alt="remove item"
-                      className="w-5 h-5"
+                      className="w-5 h-5 cursor-pointer"
                     />
                   </button>
                 </div>
